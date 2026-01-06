@@ -17,13 +17,13 @@ export default function Icon() {
           alignItems: "center",
           justifyContent: "center",
           background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-          borderRadius: "20%",
+          borderRadius: "6px",
         }}
       >
         {/* Wallet icon - matches Header logo */}
         <svg
-          width="20"
-          height="20"
+          width="26"
+          height="26"
           viewBox="0 0 24 24"
           fill="none"
           stroke="white"

@@ -18,8 +18,8 @@ export async function GET() {
       >
         {/* Wallet icon - matches Header logo */}
         <svg
-          width="320"
-          height="320"
+          width="380"
+          height="380"
           viewBox="0 0 24 24"
           fill="none"
           stroke="white"

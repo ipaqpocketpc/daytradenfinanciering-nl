@@ -22,8 +22,8 @@ export default function AppleIcon() {
       >
         {/* Wallet icon - matches Header logo */}
         <svg
-          width="110"
-          height="110"
+          width="130"
+          height="130"
           viewBox="0 0 24 24"
           fill="none"
           stroke="white"
