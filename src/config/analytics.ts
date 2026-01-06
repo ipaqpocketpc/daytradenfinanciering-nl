@@ -10,7 +10,7 @@ export const analyticsConfig = {
   clarityProjectId: "",
 
   // Google Search Console verification
-  googleSiteVerification: "",
+  googleSiteVerification: "089qRz1MVP4hX8a1KydNB6RvCl9cQwLcb7bpIsr8S4o",
 }
 
 // Affiliate Links Configuration
