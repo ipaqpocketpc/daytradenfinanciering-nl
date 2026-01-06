@@ -34,8 +34,8 @@ export function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-primary-dark shadow-glow group-hover:shadow-glow transition-all duration-300">
-                <Wallet className="w-5 h-5 text-white" />
+              <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary-dark shadow-glow group-hover:shadow-glow transition-all duration-300">
+                <Wallet className="w-7 h-7 text-white" strokeWidth={2.25} />
                 <div className="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
               <div className="flex flex-col">
