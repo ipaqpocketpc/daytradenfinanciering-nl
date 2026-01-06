@@ -7,9 +7,10 @@
   </defs>
   <!-- Rounded rectangle background -->
   <rect x="0" y="0" width="512" height="512" rx="102" ry="102" fill="url(#greenGradient)"/>
-  <!-- TrendingUp icon (scaled and centered) -->
+  <!-- Wallet icon (scaled and centered) - matches Header logo -->
   <g transform="translate(128, 128) scale(10.67)" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-    <polyline points="17 6 23 6 23 12"/>
+    <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
+    <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
+    <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
   </g>
 </svg>
