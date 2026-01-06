@@ -16,14 +16,14 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
-          borderRadius: "20%",
+          background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+          borderRadius: "22%",
         }}
       >
         {/* TrendingUp arrow icon */}
         <svg
-          width="100"
-          height="100"
+          width="110"
+          height="110"
           viewBox="0 0 24 24"
           fill="none"
           stroke="white"

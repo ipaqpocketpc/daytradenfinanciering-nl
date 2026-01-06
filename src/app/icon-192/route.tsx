@@ -12,14 +12,14 @@ export async function GET() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+          background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
           borderRadius: "20%",
         }}
       >
         {/* TrendingUp arrow icon */}
         <svg
-          width="110"
-          height="110"
+          width="120"
+          height="120"
           viewBox="0 0 24 24"
           fill="none"
           stroke="white"
