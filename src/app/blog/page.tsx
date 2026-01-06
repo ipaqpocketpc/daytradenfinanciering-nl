@@ -3,11 +3,22 @@ import Link from "next/link"
 import Script from "next/script"
 import { Calendar, Clock, ArrowRight, Tag, TrendingUp } from "lucide-react"
 import { blogPosts, blogCategories, getFeaturedPosts, getRecentPosts, BlogPost, BlogCategory } from "@/config/blog"
+import { brand } from "@/config/brand"
 import { HeroSection } from "@/components/sections/HeroSection"
 
+const currentYear = new Date().getFullYear()
+
 export const metadata: Metadata = {
-  title: `Prop Trading Blog | Nieuws, Tips & Vergelijkingen ${new Date().getFullYear()}`,
-  description: "Het laatste nieuws over prop trading, praktische tips, diepgaande vergelijkingen en analyses. Alles wat je moet weten over funded trading.",
+  title: `Funded Trading Blog | Nieuws, Tips & Analyses ${currentYear}`,
+  description: "Het laatste nieuws over funded trading, praktische tips en analyses. Alles wat je moet weten over trading kapitaal krijgen.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: `Funded Trading Blog | Nieuws, Tips & Analyses ${currentYear}`,
+    description: "Het laatste nieuws over funded trading, praktische tips en analyses.",
+    url: `${brand.url}/blog`,
+  },
 }
 
 function formatDate(dateString: string): string {
@@ -138,7 +149,6 @@ function CategoryFilter() {
 }
 
 export default function BlogPage() {
-  const currentYear = new Date().getFullYear()
   const featuredPosts = getFeaturedPosts()
   const recentPosts = getRecentPosts(10)
 
@@ -148,9 +158,9 @@ export default function BlogPage() {
   return (
     <>
       <HeroSection
-        title="Prop Trading Blog"
+        title="Funded Trading Blog"
         highlightedWord="Blog"
-        subtitle={`Het laatste nieuws, tips en analyses over prop trading. Blijf op de hoogte van de industrie en verbeter je trading.`}
+        subtitle={`Het laatste nieuws, tips en analyses over funded trading. Blijf op de hoogte van de industrie en verbeter je trading.`}
         badge={`${blogPosts.length} Artikelen`}
       />
 
@@ -236,21 +246,21 @@ export default function BlogPage() {
                 Blijf op de hoogte
               </h3>
               <p className="text-muted-foreground mb-6">
-                Ontvang het laatste nieuws over prop trading, nieuwe artikelen en exclusieve tips direct in je inbox.
+                Ontvang het laatste nieuws over funded trading, nieuwe artikelen en exclusieve tips direct in je inbox.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
-                  href="/prop-firms"
+                  href="/go/kapitaal"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition-colors"
                 >
-                  Bekijk Prop Firms
+                  Begin Direct
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="/vergelijk"
+                  href="/hoe-werkt-het"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-card border border-border text-white font-medium hover:border-primary/30 transition-colors"
                 >
-                  Vergelijk Firms
+                  Hoe Werkt Het?
                 </Link>
               </div>
             </div>
@@ -266,19 +276,19 @@ export default function BlogPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
-            "name": "Funded Trading Nederland Blog",
-            "description": "Het laatste nieuws over prop trading, tips, vergelijkingen en analyses.",
-            "url": "https://fundedtrading.nl/blog",
+            "name": "Daytraden Financiering Blog",
+            "description": "Het laatste nieuws over funded trading, tips en analyses.",
+            "url": "https://daytradenfinanciering.nl/blog",
             "publisher": {
               "@type": "Organization",
-              "name": "Funded Trading Nederland",
-              "url": "https://fundedtrading.nl",
+              "name": "Daytraden Financiering",
+              "url": "https://daytradenfinanciering.nl",
             },
             "blogPost": recentPosts.slice(0, 10).map((post) => ({
               "@type": "BlogPosting",
               "headline": post.title,
               "description": post.excerpt,
-              "url": `https://fundedtrading.nl/blog/${post.slug}`,
+              "url": `https://daytradenfinanciering.nl/blog/${post.slug}`,
               "datePublished": post.publishedAt,
               "dateModified": post.updatedAt || post.publishedAt,
               "author": {
@@ -287,7 +297,7 @@ export default function BlogPage() {
               },
               "publisher": {
                 "@type": "Organization",
-                "name": "Funded Trading Nederland",
+                "name": "Daytraden Financiering",
               },
             })),
           }),

@@ -4,6 +4,7 @@ import Link from "next/link"
 import Script from "next/script"
 import { Calendar, Clock, ArrowLeft, Tag, Share2, ChevronRight } from "lucide-react"
 import { blogPosts, blogCategories, getPostBySlug, getRecentPosts, BlogPost } from "@/config/blog"
+import { brand } from "@/config/brand"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -28,8 +29,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: post.seoTitle || `${post.title} | Funded Trading Blog`,
+    title: post.seoTitle || `${post.title} | ${brand.name}`,
     description: post.seoDescription || post.excerpt,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -50,13 +54,15 @@ function formatDate(dateString: string): string {
   })
 }
 
-// Improved markdown to HTML converter
+// Improved markdown to HTML converter with table support
 function renderMarkdown(content: string): string {
   const lines = content.split('\n')
   const result: string[] = []
   let inList = false
   let listType: 'ul' | 'ol' | null = null
   let inParagraph = false
+  let inTable = false
+  let tableHeaders: string[] = []
 
   const closeList = () => {
     if (inList && listType) {
@@ -73,6 +79,14 @@ function renderMarkdown(content: string): string {
     }
   }
 
+  const closeTable = () => {
+    if (inTable) {
+      result.push('</tbody></table></div>')
+      inTable = false
+      tableHeaders = []
+    }
+  }
+
   const processInline = (text: string): string => {
     return text
       // Bold
@@ -83,6 +97,21 @@ function renderMarkdown(content: string): string {
       .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="text-primary hover:underline">$1</a>')
   }
 
+  // Check if a line is a table row
+  const isTableRow = (line: string): boolean => {
+    return line.trim().startsWith('|') && line.trim().endsWith('|')
+  }
+
+  // Check if a line is a table separator (|---|---|)
+  const isTableSeparator = (line: string): boolean => {
+    return /^\|[\s\-:|]+\|$/.test(line.trim())
+  }
+
+  // Parse table cells from a row
+  const parseTableCells = (line: string): string[] => {
+    return line.trim().slice(1, -1).split('|').map(cell => cell.trim())
+  }
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]
     const trimmedLine = line.trim()
@@ -91,8 +120,45 @@ function renderMarkdown(content: string): string {
     if (trimmedLine === '') {
       closeList()
       closeParagraph()
+      closeTable()
       continue
     }
+
+    // Table handling
+    if (isTableRow(trimmedLine)) {
+      closeList()
+      closeParagraph()
+
+      // Check if next line is separator (this is header row)
+      const nextLine = i + 1 < lines.length ? lines[i + 1].trim() : ''
+
+      if (!inTable && isTableSeparator(nextLine)) {
+        // Start table with header
+        tableHeaders = parseTableCells(trimmedLine)
+        result.push('<div class="overflow-x-auto my-6">')
+        result.push('<table class="w-full border-collapse">')
+        result.push('<thead><tr class="border-b border-border bg-card/50">')
+        tableHeaders.forEach(header => {
+          result.push(`<th class="px-4 py-3 text-left text-sm font-semibold text-white">${processInline(header)}</th>`)
+        })
+        result.push('</tr></thead><tbody>')
+        inTable = true
+        i++ // Skip the separator line
+        continue
+      } else if (inTable) {
+        // Regular table row
+        const cells = parseTableCells(trimmedLine)
+        result.push('<tr class="border-b border-border/50 hover:bg-card/30 transition-colors">')
+        cells.forEach((cell, index) => {
+          result.push(`<td class="px-4 py-3 text-sm text-muted-foreground">${processInline(cell)}</td>`)
+        })
+        result.push('</tr>')
+        continue
+      }
+    }
+
+    // Close table if we're not on a table row anymore
+    closeTable()
 
     // Headers
     if (trimmedLine.startsWith('### ')) {
@@ -163,6 +229,7 @@ function renderMarkdown(content: string): string {
   // Close any open tags
   closeList()
   closeParagraph()
+  closeTable()
 
   return result.join('\n')
 }
@@ -316,23 +383,23 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="my-12 p-8 rounded-2xl bg-gradient-to-r from-primary/10 via-card to-secondary/10 border border-border">
               <div className="text-center">
                 <h3 className="text-2xl font-bold text-white mb-3">
-                  Klaar om te starten met prop trading?
+                  Klaar om te starten met daytraden?
                 </h3>
                 <p className="text-muted-foreground mb-6">
-                  Vergelijk de beste prop trading firms en vind de perfecte match voor jouw trading stijl.
+                  Ontdek hoe je als funded trader aan de slag kunt met professioneel trading kapitaal.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Link
-                    href="/prop-firms"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition-colors"
+                    href="/go/kapitaal"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-secondary to-secondary-dark text-white font-medium hover:opacity-90 transition-colors"
                   >
-                    Bekijk Prop Firms
+                    Start met Trading Kapitaal
                   </Link>
                   <Link
-                    href="/vergelijk"
+                    href="/hoe-werkt-het"
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-card border border-border text-white font-medium hover:border-primary/30 transition-colors"
                   >
-                    Vergelijk Firms
+                    Hoe Werkt Het?
                   </Link>
                 </div>
               </div>
@@ -363,7 +430,7 @@ export default async function BlogPostPage({ params }: Props) {
             "@type": "Article",
             "headline": post.title,
             "description": post.excerpt,
-            "image": post.coverImage || "https://fundedtrading.nl/og-image.png",
+            "image": post.coverImage || `${brand.url}/og-image.png`,
             "datePublished": post.publishedAt,
             "dateModified": post.updatedAt || post.publishedAt,
             "author": {
@@ -372,16 +439,16 @@ export default async function BlogPostPage({ params }: Props) {
             },
             "publisher": {
               "@type": "Organization",
-              "name": "Funded Trading Nederland",
-              "url": "https://fundedtrading.nl",
+              "name": brand.name,
+              "url": brand.url,
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://fundedtrading.nl/logo.png",
+                "url": `${brand.url}/logo.png`,
               },
             },
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `https://fundedtrading.nl/blog/${post.slug}`,
+              "@id": `${brand.url}/blog/${post.slug}`,
             },
             "keywords": post.tags.join(", "),
             "articleSection": categoryInfo.name,
@@ -403,25 +470,25 @@ export default async function BlogPostPage({ params }: Props) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://fundedtrading.nl",
+                "item": brand.url,
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Blog",
-                "item": "https://fundedtrading.nl/blog",
+                "item": `${brand.url}/blog`,
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": categoryInfo.name,
-                "item": `https://fundedtrading.nl/blog/categorie/${post.category}`,
+                "item": `${brand.url}/blog/categorie/${post.category}`,
               },
               {
                 "@type": "ListItem",
                 "position": 4,
                 "name": post.title,
-                "item": `https://fundedtrading.nl/blog/${post.slug}`,
+                "item": `${brand.url}/blog/${post.slug}`,
               },
             ],
           }),

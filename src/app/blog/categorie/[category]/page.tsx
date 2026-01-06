@@ -4,6 +4,7 @@ import Link from "next/link"
 import Script from "next/script"
 import { Calendar, Clock, ArrowLeft, ArrowRight, Tag, TrendingUp } from "lucide-react"
 import { blogCategories, getPostsByCategory, BlogPost, BlogCategory } from "@/config/blog"
+import { brand } from "@/config/brand"
 
 type Props = {
   params: Promise<{ category: string }>
@@ -28,8 +29,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${categoryInfo.name} | Prop Trading Blog`,
+    title: `${categoryInfo.name} | Funded Trading Blog`,
     description: categoryInfo.description,
+    alternates: {
+      canonical: `/blog/categorie/${category}`,
+    },
+    openGraph: {
+      title: `${categoryInfo.name} | Funded Trading Blog`,
+      description: categoryInfo.description,
+      url: `${brand.url}/blog/categorie/${category}`,
+    },
   }
 }
 
@@ -193,7 +202,7 @@ export default async function CategoryPage({ params }: Props) {
                 Meer ontdekken?
               </h3>
               <p className="text-muted-foreground mb-6">
-                Bekijk al onze artikelen of vergelijk direct de beste prop trading firms.
+                Bekijk al onze artikelen of start direct met funded trading.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
@@ -203,10 +212,10 @@ export default async function CategoryPage({ params }: Props) {
                   Alle Artikelen
                 </Link>
                 <Link
-                  href="/prop-firms"
+                  href="/go/kapitaal"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition-colors"
                 >
-                  Bekijk Prop Firms
+                  Start met Trading
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -223,9 +232,9 @@ export default async function CategoryPage({ params }: Props) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": `${categoryInfo.name} - Prop Trading Blog`,
+            "name": `${categoryInfo.name} - Funded Trading Blog`,
             "description": categoryInfo.description,
-            "url": `https://fundedtrading.nl/blog/categorie/${category}`,
+            "url": `${brand.url}/blog/categorie/${category}`,
             "mainEntity": {
               "@type": "ItemList",
               "itemListElement": sortedPosts.map((post, index) => ({
@@ -234,7 +243,7 @@ export default async function CategoryPage({ params }: Props) {
                 "item": {
                   "@type": "BlogPosting",
                   "headline": post.title,
-                  "url": `https://fundedtrading.nl/blog/${post.slug}`,
+                  "url": `${brand.url}/blog/${post.slug}`,
                 },
               })),
             },

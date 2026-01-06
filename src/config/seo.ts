@@ -8,17 +8,17 @@ export const seo = {
   siteUrl: brand.url,
 
   // Default meta
-  defaultTitle: `Prop Firms Vergelijken | Beste Keuze ${currentYear} | ${brand.name}`,
+  defaultTitle: `Trading Kapitaal Krijgen | Funded Trader Worden ${currentYear} | ${brand.name}`,
   titleTemplate: `%s | ${brand.name}`,
   defaultDescription: brand.description,
 
   // Open Graph
-  ogImage: "/og-image.jpg",
+  // Dynamic OG images are generated via opengraph-image.tsx
   ogType: "website" as const,
   locale: "nl_NL",
 
   // Twitter
-  twitterHandle: "@fundedtradingnl",
+  twitterHandle: "@daytradenfinanc",
   twitterCardType: "summary_large_image" as const,
 
   // Robots
@@ -34,57 +34,62 @@ export const seo = {
 // SEO Templates for different page types
 export const seoTemplates = {
   homepage: {
-    title: `Prop Firms Vergelijken | Beste Keuze ${currentYear} | FundedTrading.nl`,
-    description: "Vergelijk de beste prop trading firms in Nederland. Vind de juiste prop firm voor jou. FTMO, Apex en meer. Onafhankelijke reviews en eerlijke vergelijkingen.",
+    title: `Trading Kapitaal Krijgen | Tot €200.000 Funded Account ${currentYear} | ${brand.name}`,
+    description: "Ontdek hoe je trading kapitaal krijgt zonder eigen geld. Word een funded trader en handel met professioneel kapitaal. Compleet stappenplan.",
   },
 
-  firmDetail: (firmName: string) => ({
-    title: `${firmName} Review ${currentYear} | Eerlijke Ervaring & Prijzen | FundedTrading`,
-    description: `Complete ${firmName} review ${currentYear}. Prijzen, profit split, challenge regels en onze eerlijke ervaring. Is ${firmName} de beste prop firm voor jou?`,
-  }),
-
-  firmKortingscode: (firmName: string) => ({
-    title: `${firmName} Kortingscode ${currentYear} | Bespaar op je Challenge`,
-    description: `Actuele ${firmName} kortingscode ${currentYear}. Bespaar op je prop trading challenge met de nieuwste kortingen en acties.`,
-  }),
-
-  firmReview: (firmName: string) => ({
-    title: `${firmName} Review & Ervaringen ${currentYear} | Uitgebreide Analyse`,
-    description: `Uitgebreide ${firmName} review met echte ervaringen. Voor- en nadelen, prijzen, regels en tips voor het halen van je challenge.`,
-  }),
-
-  vergelijk: (firm1: string, firm2: string) => ({
-    title: `${firm1} vs ${firm2} | Welke Prop Firm is Beter?`,
-    description: `${firm1} vs ${firm2} vergelijking. Profit split, prijzen, regels en meer. Ontdek welke prop firm het beste bij jouw trading stijl past.`,
-  }),
-
-  city: (cityName: string) => ({
-    title: `Prop Trading ${cityName} | Funded Worden in ${currentYear}`,
-    description: `Prop trading in ${cityName}. Actieve traders, populairste prop firms en lokale statistieken. Start vandaag met funded trading in ${cityName}.`,
-  }),
-
-  wijk: (wijkName: string, cityName: string) => ({
-    title: `Prop Trading ${wijkName}, ${cityName} | FundedTrading.nl`,
-    description: `Prop trading in ${wijkName}, ${cityName}. Lokale statistieken en informatie over funded traders in ${wijkName}.`,
-  }),
-
-  propFirmsOverview: {
-    title: `Alle Prop Firms Vergelijken | Top 20+ Reviews ${currentYear} | FundedTrading.nl`,
-    description: "Complete lijst van alle prop trading firms. Vergelijk FTMO, Apex, The5%ers en meer. Actuele prijzen, profit splits en eerlijke reviews.",
+  howItWorks: {
+    title: `Hoe Werkt Funded Trading? | Stap voor Stap Uitgelegd ${currentYear}`,
+    description: "Leer hoe funded trading werkt. Van evaluatie tot funded account. Compleet stappenplan om trading kapitaal te krijgen zonder eigen geld.",
   },
 
-  vergelijkTool: {
-    title: `Prop Firms Vergelijken | Interactieve Tool ${currentYear} | FundedTrading.nl`,
-    description: "Vergelijk prop trading firms side-by-side. Filter op profit split, prijs, challenge type en meer. Vind de perfecte prop firm voor jou.",
+  benefits: {
+    title: `Voordelen van Funded Trading | Waarom Trading Kapitaal ${currentYear}`,
+    description: "Ontdek de voordelen van funded trading. Handel met professioneel kapitaal, geen eigen risico, en behoud tot 90% van je winst.",
+  },
+
+  costs: {
+    title: `Kosten Funded Trading | Wat Kost een Trading Evaluatie ${currentYear}`,
+    description: "Overzicht van de kosten voor funded trading. Evaluatie prijzen, terugbetaling bij succes, en waar je op moet letten.",
+  },
+
+  gettingStarted: {
+    title: `Beginnen met Funded Trading | Eerste Stappen ${currentYear}`,
+    description: "Stap voor stap beginnen met funded trading. Van voorbereiding tot je eerste funded account. Tips voor beginners.",
+  },
+
+  faq: {
+    title: `Veelgestelde Vragen Funded Trading | FAQ ${currentYear}`,
+    description: "Antwoorden op de meest gestelde vragen over funded trading. Alles over trading kapitaal, evaluaties en funded accounts.",
+  },
+
+  glossary: {
+    title: `Trading Begrippen | Woordenlijst voor Traders ${currentYear}`,
+    description: "Complete woordenlijst met trading begrippen. Van funded account tot drawdown - alle termen die je moet kennen als trader.",
   },
 
   blog: {
-    title: "Prop Trading Blog | Nieuws, Tips & Guides | FundedTrading.nl",
-    description: "Prop trading nieuws, tips en uitgebreide guides. Leer alles over prop firms, challenges en hoe je funded kunt worden.",
+    title: `Daytraden Blog | Tips, Strategieën & Nieuws | ${brand.name}`,
+    description: "Daytraden tips, strategieën en nieuws. Leer alles over trading kapitaal, funded trading en hoe je een succesvolle trader wordt.",
+  },
+
+  blogPost: (title: string) => ({
+    title: `${title} | ${brand.name}`,
+    description: `${title}. Lees meer op ${brand.name} - jouw gids voor trading kapitaal.`,
+  }),
+
+  contact: {
+    title: `Contact | ${brand.name}`,
+    description: `Neem contact op met ${brand.name}. Vragen over trading kapitaal of funded trading? We helpen je graag verder.`,
+  },
+
+  about: {
+    title: `Over Ons | ${brand.name}`,
+    description: `Over ${brand.name}. Onze missie is om traders te helpen aan trading kapitaal zonder eigen geld te investeren.`,
   },
 
   calculator: {
-    title: "Prop Trading Winstcalculator | Bereken je Potentiële Winst",
-    description: "Bereken je potentiële winst als funded trader. Voer je account size, profit split en verwachte returns in.",
+    title: "Funded Trading Calculator | Bereken je Potentiële Winst",
+    description: "Bereken je potentiële winst als funded trader. Voer je account size, winstdeling en verwachte returns in.",
   },
 }

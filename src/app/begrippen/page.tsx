@@ -1,7 +1,9 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import Script from 'next/script'
-import { Book, ChevronRight, ArrowRight } from 'lucide-react'
+import { Metadata } from "next"
+import Link from "next/link"
+import Script from "next/script"
+import { Book, ArrowRight, Search } from "lucide-react"
+import { Button, Badge } from "@/components/ui"
+import { brand } from "@/config/brand"
 import {
   glossaryTerms,
   glossaryCategories,
@@ -9,26 +11,19 @@ import {
   getAvailableLetters,
   getTermsByLetter,
   getTermsByCategory,
-  GlossaryCategory
-} from '@/config/glossary'
-
-const currentYear = new Date().getFullYear()
+  GlossaryCategory,
+} from "@/config/glossary"
 
 export const metadata: Metadata = {
-  title: `Trading Begrippen & Terminologie | Glossary ${currentYear} | FundedTrading.nl`,
-  description: `Compleet overzicht van ${glossaryTerms.length}+ trading begrippen. Van Funded Account tot Drawdown - leer alle termen die je nodig hebt voor prop trading.`,
-  keywords: [
-    'trading begrippen',
-    'funded trading uitleg',
-    'wat is een funded account',
-    'drawdown betekenis',
-    'prop trading terminologie',
-    'trading glossary nederlands',
-  ],
+  title: `Trading Begrippen | ${glossaryTerms.length}+ Termen Uitgelegd`,
+  description: `Compleet overzicht van ${glossaryTerms.length}+ trading begrippen. Van Funded Account tot Drawdown - leer alle termen die je nodig hebt voor funded trading.`,
+  alternates: {
+    canonical: "/begrippen",
+  },
   openGraph: {
-    title: `Trading Begrippen & Terminologie | Glossary ${currentYear}`,
-    description: `Compleet overzicht van ${glossaryTerms.length}+ trading begrippen. Leer alle termen voor prop trading.`,
-    type: 'website',
+    title: `Trading Begrippen | ${glossaryTerms.length}+ Termen Uitgelegd`,
+    description: `Compleet overzicht van ${glossaryTerms.length}+ trading begrippen. Leer alle termen voor funded trading.`,
+    url: `${brand.url}/begrippen`,
   },
 }
 
@@ -37,90 +32,38 @@ export default function BegrippenPage() {
   const availableLetters = getAvailableLetters()
   const categories = Object.keys(glossaryCategories) as GlossaryCategory[]
 
-  // Schema.org DefinedTermSet
-  const schemaData = {
-    '@context': 'https://schema.org',
-    '@type': 'DefinedTermSet',
-    name: 'Trading Begrippen Glossary',
-    description: `Compleet overzicht van ${glossaryTerms.length}+ trading en prop trading begrippen`,
-    url: 'https://fundedtrading.nl/begrippen',
-    inLanguage: 'nl',
-    hasDefinedTerm: glossaryTerms.map(term => ({
-      '@type': 'DefinedTerm',
-      name: term.term,
-      description: term.shortDefinition,
-      url: `https://fundedtrading.nl/begrippen#${term.slug}`,
-    })),
-  }
-
-  // FAQ Schema for popular terms
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Wat is een Funded Account?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Een funded account is een handelsrekening waarbij je handelt met kapitaal van een prop trading bedrijf. Na het succesvol afronden van een evaluatie krijg je toegang tot dit kapitaal en deel je de winsten met het bedrijf.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Wat betekent Drawdown in trading?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Drawdown meet de daling van je accountwaarde vanaf een piek tot een dal, uitgedrukt als percentage. Bij prop firms zijn er maximale drawdown limieten die je niet mag overschrijden.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Wat is een Trading Challenge?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Een trading challenge is een evaluatietest van prop firms om je vaardigheden te beoordelen. Je moet bepaalde winstdoelen halen terwijl je binnen risico limieten blijft om toegang te krijgen tot een funded account.',
-        },
-      },
-    ],
-  }
-
   return (
     <>
-      <Script
-        id="schema-glossary"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
-      <Script
-        id="schema-faq"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      {/* Hero */}
+      <section className="relative min-h-[45vh] flex items-center overflow-hidden pt-24 pb-16">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
+        <div className="absolute inset-0 bg-mesh opacity-30" />
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/15 rounded-full blur-[120px]" />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-slate-900 to-slate-800 text-white pt-32 md:pt-52 pb-16">
-        <div className="container mx-auto px-4">
+        <div className="relative container-wide">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full text-sm mb-6">
-              <Book className="h-4 w-4" />
-              <span>{glossaryTerms.length}+ begrippen</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Trading Begrippen & Terminologie
+            <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 px-4 py-1.5">
+              <Book className="w-4 h-4 mr-2" />
+              {glossaryTerms.length}+ begrippen
+            </Badge>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              Trading <span className="gradient-text">Begrippen</span>
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              Compleet overzicht van alle trading termen die je nodig hebt voor funded trading.
-              Van basis begrippen tot geavanceerde prop trading terminologie.
+
+            <p className="text-xl text-muted-foreground leading-relaxed mb-10">
+              Compleet overzicht van alle trading termen die je nodig hebt. Van
+              basis begrippen tot geavanceerde funded trading terminologie.
             </p>
 
-            {/* Quick Jump to Letter */}
+            {/* Letter Navigation */}
             <div className="flex flex-wrap justify-center gap-2">
-              {availableLetters.map(letter => (
+              {availableLetters.map((letter) => (
                 <a
                   key={letter}
                   href={`#letter-${letter}`}
-                  className="w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-blue-600 rounded-lg font-semibold transition-colors"
+                  className="w-10 h-10 flex items-center justify-center bg-card border border-border hover:border-primary hover:bg-primary/10 rounded-lg font-semibold text-white transition-colors"
                 >
                   {letter}
                 </a>
@@ -131,20 +74,22 @@ export default function BegrippenPage() {
       </section>
 
       {/* Category Quick Links */}
-      <section className="py-8 bg-gray-50 border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map(category => {
+      <section className="py-8 border-t border-border bg-card/30">
+        <div className="container-wide">
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((category) => {
               const catInfo = glossaryCategories[category]
               const count = getTermsByCategory(category).length
               return (
                 <a
                   key={category}
                   href={`#cat-${category}`}
-                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                  className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg hover:border-primary/30 transition-colors"
                 >
-                  <span className="font-medium">{catInfo.name}</span>
-                  <span className="text-sm text-gray-500">({count})</span>
+                  <span className="font-medium text-white">{catInfo.name}</span>
+                  <span className="text-sm text-muted-foreground">
+                    ({count})
+                  </span>
                 </a>
               )
             })}
@@ -153,33 +98,42 @@ export default function BegrippenPage() {
       </section>
 
       {/* Main Content */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      <section className="py-16 border-t border-border">
+        <div className="container-wide">
           <div className="max-w-4xl mx-auto">
-
-            {/* Popular Terms Highlight */}
+            {/* Popular Terms */}
             <div className="mb-16">
-              <h2 className="text-2xl font-bold mb-6">Meest Gezochte Begrippen</h2>
+              <div className="flex items-center gap-3 mb-8">
+                <Search className="w-6 h-6 text-primary" />
+                <h2 className="text-2xl font-bold text-white">
+                  Meest Gezochte Begrippen
+                </h2>
+              </div>
               <div className="grid md:grid-cols-2 gap-4">
-                {['funded-account', 'drawdown', 'trading-challenge', 'prop-trading'].map(slug => {
-                  const term = alphabeticalTerms.find(t => t.slug === slug)
+                {[
+                  "funded-account",
+                  "drawdown",
+                  "trading-challenge",
+                  "prop-trading",
+                ].map((slug) => {
+                  const term = alphabeticalTerms.find((t) => t.slug === slug)
                   if (!term) return null
                   return (
                     <a
                       key={term.slug}
                       href={`#${term.slug}`}
-                      className="group p-4 bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-xl hover:border-blue-300 transition-colors"
+                      className="group p-5 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors"
                     >
                       <div className="flex items-start justify-between">
                         <div>
-                          <h3 className="font-semibold text-lg group-hover:text-blue-600 transition-colors">
+                          <h3 className="font-semibold text-lg text-white group-hover:text-primary transition-colors">
                             {term.term}
                           </h3>
-                          <p className="text-gray-600 text-sm mt-1">
+                          <p className="text-muted-foreground text-sm mt-1">
                             {term.shortDefinition}
                           </p>
                         </div>
-                        <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+                        <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
                       </div>
                     </a>
                   )
@@ -189,42 +143,56 @@ export default function BegrippenPage() {
 
             {/* Alphabetical List */}
             <div className="space-y-12">
-              {availableLetters.map(letter => {
+              {availableLetters.map((letter) => {
                 const termsForLetter = getTermsByLetter(letter)
                 return (
-                  <div key={letter} id={`letter-${letter}`} className="scroll-mt-24">
+                  <div
+                    key={letter}
+                    id={`letter-${letter}`}
+                    className="scroll-mt-24"
+                  >
                     <div className="flex items-center gap-4 mb-6">
-                      <span className="text-4xl font-bold text-blue-600">{letter}</span>
-                      <div className="flex-1 h-px bg-gray-200" />
+                      <span className="text-4xl font-bold text-primary">
+                        {letter}
+                      </span>
+                      <div className="flex-1 h-px bg-border" />
                     </div>
-                    <div className="space-y-6">
-                      {termsForLetter.map(term => (
+                    <div className="space-y-4">
+                      {termsForLetter.map((term) => (
                         <article
                           key={term.slug}
                           id={term.slug}
-                          className="scroll-mt-24 p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-200 hover:shadow-sm transition-all"
+                          className="scroll-mt-24 p-6 bg-card rounded-xl border border-border hover:border-primary/20 transition-colors"
                         >
                           <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
-                            <h3 className="text-xl font-bold">{term.term}</h3>
-                            <span className={`text-xs px-2 py-1 rounded-full ${getCategoryColor(term.category)}`}>
+                            <h3 className="text-xl font-bold text-white">
+                              {term.term}
+                            </h3>
+                            <span
+                              className={`text-xs px-2 py-1 rounded-full ${getCategoryColor(term.category)}`}
+                            >
                               {glossaryCategories[term.category].name}
                             </span>
                           </div>
-                          <p className="text-gray-700 leading-relaxed">
+                          <p className="text-muted-foreground leading-relaxed">
                             {term.definition}
                           </p>
                           {term.relatedTerms && term.relatedTerms.length > 0 && (
-                            <div className="mt-4 pt-4 border-t border-gray-100">
-                              <span className="text-sm text-gray-500 mr-2">Gerelateerd:</span>
+                            <div className="mt-4 pt-4 border-t border-border">
+                              <span className="text-sm text-muted-foreground mr-2">
+                                Gerelateerd:
+                              </span>
                               <div className="inline-flex flex-wrap gap-2">
-                                {term.relatedTerms.map(slug => {
-                                  const related = alphabeticalTerms.find(t => t.slug === slug)
+                                {term.relatedTerms.map((slug) => {
+                                  const related = alphabeticalTerms.find(
+                                    (t) => t.slug === slug
+                                  )
                                   if (!related) return null
                                   return (
                                     <a
                                       key={slug}
                                       href={`#${slug}`}
-                                      className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                                      className="text-sm text-primary hover:text-primary/80 hover:underline"
                                     >
                                       {related.term}
                                     </a>
@@ -242,25 +210,37 @@ export default function BegrippenPage() {
             </div>
 
             {/* By Category */}
-            <div className="mt-20 pt-16 border-t">
-              <h2 className="text-2xl font-bold mb-8 text-center">Begrippen per Categorie</h2>
+            <div className="mt-20 pt-16 border-t border-border">
+              <h2 className="text-2xl font-bold text-white mb-8 text-center">
+                Begrippen per Categorie
+              </h2>
               <div className="space-y-12">
-                {categories.map(category => {
+                {categories.map((category) => {
                   const catInfo = glossaryCategories[category]
                   const terms = getTermsByCategory(category)
                   return (
-                    <div key={category} id={`cat-${category}`} className="scroll-mt-24">
+                    <div
+                      key={category}
+                      id={`cat-${category}`}
+                      className="scroll-mt-24"
+                    >
                       <div className="flex items-center gap-4 mb-4">
-                        <h3 className="text-xl font-bold">{catInfo.name}</h3>
-                        <span className="text-sm text-gray-500">({terms.length} begrippen)</span>
+                        <h3 className="text-xl font-bold text-white">
+                          {catInfo.name}
+                        </h3>
+                        <span className="text-sm text-muted-foreground">
+                          ({terms.length} begrippen)
+                        </span>
                       </div>
-                      <p className="text-gray-600 mb-4">{catInfo.description}</p>
+                      <p className="text-muted-foreground mb-4">
+                        {catInfo.description}
+                      </p>
                       <div className="flex flex-wrap gap-2">
-                        {terms.map(term => (
+                        {terms.map((term) => (
                           <a
                             key={term.slug}
                             href={`#${term.slug}`}
-                            className="px-3 py-1.5 bg-gray-100 hover:bg-blue-100 rounded-lg text-sm transition-colors"
+                            className="px-3 py-1.5 bg-card border border-border hover:border-primary/30 hover:bg-primary/5 rounded-lg text-sm text-white transition-colors"
                           >
                             {term.term}
                           </a>
@@ -275,43 +255,108 @@ export default function BegrippenPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Klaar om te starten met Funded Trading?
+      {/* CTA */}
+      <section className="relative py-24 overflow-hidden border-t border-border">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-card to-background" />
+        <div className="absolute inset-0 bg-mesh opacity-50" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px]" />
+
+        <div className="relative container-wide text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ken Je de Begrippen?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Nu je de begrippen kent, vergelijk de beste prop trading firms en vind de juiste voor jou.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+            Nu je de terminologie kent, ben je klaar om te starten met trading
+            kapitaal.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/vergelijk"
-              className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-secondary to-secondary-dark text-white shadow-glow-green btn-glow text-base px-8 h-14"
             >
-              Vergelijk Prop Firms
-              <ChevronRight className="h-5 w-5" />
-            </Link>
-            <Link
-              href="/prop-firms"
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
-            >
-              Bekijk Alle Firms
-            </Link>
+              <Link href="/go/kapitaal" className="flex items-center gap-2">
+                Begin Nu met Trading Kapitaal
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="h-14">
+              <Link href="/hoe-werkt-het">Lees Hoe Het Werkt</Link>
+            </Button>
           </div>
         </div>
       </section>
+
+      {/* Schema.org DefinedTermSet */}
+      <Script
+        id="schema-glossary"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "DefinedTermSet",
+            name: "Trading Begrippen Glossary",
+            description: `Compleet overzicht van ${glossaryTerms.length}+ trading en funded trading begrippen`,
+            url: `${brand.url}/begrippen`,
+            inLanguage: "nl",
+            hasDefinedTerm: glossaryTerms.map((term) => ({
+              "@type": "DefinedTerm",
+              name: term.term,
+              description: term.shortDefinition,
+              url: `${brand.url}/begrippen#${term.slug}`,
+            })),
+          }),
+        }}
+      />
+
+      {/* FAQ Schema */}
+      <Script
+        id="schema-faq"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Wat is een Funded Account?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Een funded account is een handelsrekening waarbij je handelt met kapitaal van een financier. Na het succesvol afronden van een evaluatie krijg je toegang tot dit kapitaal en deel je de winsten met de financier.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Wat betekent Drawdown in trading?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Drawdown meet de daling van je accountwaarde vanaf een piek tot een dal, uitgedrukt als percentage. Bij funded trading zijn er maximale drawdown limieten die je niet mag overschrijden.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Wat is een Trading Challenge?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Een trading challenge is een evaluatietest van financiers om je vaardigheden te beoordelen. Je moet bepaalde winstdoelen halen terwijl je binnen risico limieten blijft om toegang te krijgen tot een funded account.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
     </>
   )
 }
 
 function getCategoryColor(category: GlossaryCategory): string {
   const colors: Record<GlossaryCategory, string> = {
-    'basis': 'bg-gray-100 text-gray-700',
-    'risicobeheer': 'bg-red-100 text-red-700',
-    'strategie': 'bg-green-100 text-green-700',
-    'technisch': 'bg-purple-100 text-purple-700',
-    'prop-trading': 'bg-blue-100 text-blue-700',
+    basis: "bg-primary/10 text-primary",
+    risicobeheer: "bg-red-500/10 text-red-400",
+    strategie: "bg-secondary/10 text-secondary",
+    technisch: "bg-purple-500/10 text-purple-400",
+    "prop-trading": "bg-accent/10 text-accent",
   }
   return colors[category]
 }

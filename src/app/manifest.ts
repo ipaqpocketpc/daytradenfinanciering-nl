@@ -4,7 +4,7 @@ import { brand, design } from "@/config"
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: brand.name,
-    short_name: "FundedTrading",
+    short_name: "Daytraden",
     description: brand.description,
     start_url: "/",
     display: "standalone",

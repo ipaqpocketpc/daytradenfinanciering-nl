@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate category
-    const validCategories: BlogCategory[] = ["nieuws", "tips", "vergelijking", "analyse", "gids", "interview"]
+    const validCategories: BlogCategory[] = ["financiering", "beginners", "strategie", "psychologie", "gids", "nieuws"]
     if (!validCategories.includes(data.category)) {
       return NextResponse.json(
         {
@@ -159,7 +159,7 @@ export async function GET() {
           title: "string (required) - Post title",
           excerpt: "string (required) - Short summary",
           content: "string (required) - Markdown content",
-          category: "string (required) - One of: nieuws, tips, vergelijking, analyse, gids, interview",
+          category: "string (required) - One of: financiering, beginners, strategie, psychologie, gids, nieuws",
           tags: "string[] (required) - Array of tags",
           publishedAt: "string (optional) - ISO date string, defaults to now",
           readingTime: "number (optional) - Minutes, auto-calculated if not provided",

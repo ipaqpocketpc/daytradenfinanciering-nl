@@ -57,3 +57,28 @@ export function slugify(str: string): string {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '')
 }
+
+/**
+ * Get current year
+ */
+export function getCurrentYear(): number {
+  return new Date().getFullYear()
+}
+
+/**
+ * Get current month name in Dutch
+ */
+export function getCurrentMonthDutch(): string {
+  const months = [
+    'januari', 'februari', 'maart', 'april', 'mei', 'juni',
+    'juli', 'augustus', 'september', 'oktober', 'november', 'december'
+  ]
+  return months[new Date().getMonth()]
+}
+
+/**
+ * Get current date in ISO format (YYYY-MM-DD)
+ */
+export function getCurrentDateISO(): string {
+  return new Date().toISOString().split('T')[0]
+}

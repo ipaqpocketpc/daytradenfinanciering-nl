@@ -4,14 +4,34 @@ const nextConfig: NextConfig = {
   // Redirects van oude WordPress site naar nieuwe Next.js site
   async redirects() {
     return [
-      // === PAGINA REDIRECTS ===
+      // === PAGINA REDIRECTS (WordPress → Next.js) ===
       {
-        source: "/over-funded-trading-nederland",
+        source: "/disclaimer-risicos",
+        destination: "/disclaimer",
+        permanent: true,
+      },
+      {
+        source: "/disclaimer-risicos/",
+        destination: "/disclaimer",
+        permanent: true,
+      },
+      {
+        source: "/privacy-beleid",
+        destination: "/privacy",
+        permanent: true,
+      },
+      {
+        source: "/privacy-beleid/",
+        destination: "/privacy",
+        permanent: true,
+      },
+      {
+        source: "/over-onze-website",
         destination: "/over-ons",
         permanent: true,
       },
       {
-        source: "/over-funded-trading-nederland/",
+        source: "/over-onze-website/",
         destination: "/over-ons",
         permanent: true,
       },
@@ -26,171 +46,385 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/veelgestelde-vragen",
-        destination: "/#faq",
+        source: "/top-8-beste-kapitaalverstrekkers-voor-je-startkapitaal",
+        destination: "/beginnen",
         permanent: true,
       },
       {
-        source: "/veelgestelde-vragen/",
-        destination: "/#faq",
+        source: "/top-8-beste-kapitaalverstrekkers-voor-je-startkapitaal/",
+        destination: "/beginnen",
+        permanent: true,
+      },
+      {
+        source: "/kennisbank",
+        destination: "/begrippen",
+        permanent: true,
+      },
+      {
+        source: "/kennisbank/",
+        destination: "/begrippen",
         permanent: true,
       },
 
-      // === BLOG/ARTIKEL REDIRECTS ===
+      // === BLOG/ARTIKEL REDIRECTS (alle oude posts → /blog) ===
       {
-        source: "/ftmo-funded-account-hoe-werkt-het-en-hoe-verdien-je-ermee",
-        destination: "/prop-firms/ftmo",
-        permanent: true,
-      },
-      {
-        source: "/ftmo-funded-account-hoe-werkt-het-en-hoe-verdien-je-ermee/",
-        destination: "/prop-firms/ftmo",
-        permanent: true,
-      },
-      {
-        source: "/de-beste-funded-trading-brokers-van-2024-in-nederland",
-        destination: "/prop-firms",
-        permanent: true,
-      },
-      {
-        source: "/de-beste-funded-trading-brokers-van-2024-in-nederland/",
-        destination: "/prop-firms",
-        permanent: true,
-      },
-      {
-        source: "/de-beste-funded-trading-accounts",
-        destination: "/prop-firms",
-        permanent: true,
-      },
-      {
-        source: "/de-beste-funded-trading-accounts/",
-        destination: "/prop-firms",
-        permanent: true,
-      },
-      {
-        source: "/hoe-kies-je-het-beste-funded-trading-platform-in-2025",
-        destination: "/vergelijk",
-        permanent: true,
-      },
-      {
-        source: "/hoe-kies-je-het-beste-funded-trading-platform-in-2025/",
-        destination: "/vergelijk",
-        permanent: true,
-      },
-      {
-        source: "/profit-risk-calculator-2-0-jouw-gratis-voorsprong-in-funded-trading",
-        destination: "/tools",
-        permanent: true,
-      },
-      {
-        source: "/profit-risk-calculator-2-0-jouw-gratis-voorsprong-in-funded-trading/",
-        destination: "/tools",
-        permanent: true,
-      },
-      {
-        source: "/topstep-kortingscodes-en-promotiecodes",
-        destination: "/prop-firms",
-        permanent: true,
-      },
-      {
-        source: "/topstep-kortingscodes-en-promotiecodes/",
-        destination: "/prop-firms",
-        permanent: true,
-      },
-      {
-        source: "/uw-alles-in-een-handleiding-voor-funded-trading-van-beginner-tot-expert",
-        destination: "/blog/prop-trading-beginnen-complete-gids",
-        permanent: true,
-      },
-      {
-        source: "/uw-alles-in-een-handleiding-voor-funded-trading-van-beginner-tot-expert/",
-        destination: "/blog/prop-trading-beginnen-complete-gids",
-        permanent: true,
-      },
-      {
-        source: "/funded-trading-en-belastingen-in-nederland-hoeveel-moet-je-betalen",
+        source: "/welke-strategie-kun-je-gebruiken-voor-winstgevend-futures-traden",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/funded-trading-en-belastingen-in-nederland-hoeveel-moet-je-betalen/",
+        source: "/welke-strategie-kun-je-gebruiken-voor-winstgevend-futures-traden/",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/hoeveel-geld-kan-ik-verdienen-als-trader-met-een-funded-trading-account",
+        source: "/daytraden-met-futures",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/hoeveel-geld-kan-ik-verdienen-als-trader-met-een-funded-trading-account/",
+        source: "/daytraden-met-futures/",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/de-voor-en-nadelen-van-daytraden-in-funded-trading",
+        source: "/waarom-een-account-bij-daytradenfinanciering",
+        destination: "/over-ons",
+        permanent: true,
+      },
+      {
+        source: "/waarom-een-account-bij-daytradenfinanciering/",
+        destination: "/over-ons",
+        permanent: true,
+      },
+      {
+        source: "/de-start-van-mijn-carriere-als-futures-trader",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/de-voor-en-nadelen-van-daytraden-in-funded-trading/",
+        source: "/de-start-van-mijn-carriere-als-futures-trader/",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/forex-daytraden-met-een-funded-account-de-voor-en-nadelen-in-nederland",
+        source: "/futures-daytraden-stap-1-dag-1",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/forex-daytraden-met-een-funded-account-de-voor-en-nadelen-in-nederland/",
+        source: "/futures-daytraden-stap-1-dag-1/",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/waarom-forex-day-traders-in-2024-de-voorkeur-geven-aan-futures-trading",
+        source: "/futures-daytraden-stap-1-dag-2-en-3",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/waarom-forex-day-traders-in-2024-de-voorkeur-geven-aan-futures-trading/",
+        source: "/futures-daytraden-stap-1-dag-2-en-3/",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/7-strategieen-voor-scalping-in-funded-trading-accounts",
+        source: "/futures-daytraden-evaluatie-van-stap-1",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/7-strategieen-voor-scalping-in-funded-trading-accounts/",
+        source: "/futures-daytraden-evaluatie-van-stap-1/",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/futures-trading-in-nederland-een-analyse-en-trading-strategieen",
+        source: "/futures-daytraden-stap-1-dag-4-en-5",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/futures-trading-in-nederland-een-analyse-en-trading-strategieen/",
+        source: "/futures-daytraden-stap-1-dag-4-en-5/",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/van-start-tot-succes-een-funded-traders-live-trading-avontuur",
+        source: "/futures-daytraden-stap-2",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/van-start-tot-succes-een-funded-traders-live-trading-avontuur/",
+        source: "/futures-daytraden-stap-2/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/futures-daytraden-stap-2-poging-2",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/futures-daytraden-stap-2-poging-2/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/een-maand-later-hoe-gaat-het-futures-traden-nu",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/een-maand-later-hoe-gaat-het-futures-traden-nu/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/mijn-favoriete-future-de-e-mini-sp-500",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/mijn-favoriete-future-de-e-mini-sp-500/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/de-10-belangsrijkste-punten-van-mijn-futures-trading-plan",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/de-10-belangsrijkste-punten-van-mijn-futures-trading-plan/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/mijn-favoriete-future-nr-2-de-e-mini-nasdaq-100",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/mijn-favoriete-future-nr-2-de-e-mini-nasdaq-100/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/nieuwe-blog",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/nieuwe-blog/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/is-het-moeilijk-om-een-gefinancierd-account-te-behalen",
+        destination: "/hoe-werkt-het",
+        permanent: true,
+      },
+      {
+        source: "/is-het-moeilijk-om-een-gefinancierd-account-te-behalen/",
+        destination: "/hoe-werkt-het",
+        permanent: true,
+      },
+      {
+        source: "/hoe-kun-je-succesvol-starten-met-funded-trading-in-nederland",
+        destination: "/beginnen",
+        permanent: true,
+      },
+      {
+        source: "/hoe-kun-je-succesvol-starten-met-funded-trading-in-nederland/",
+        destination: "/beginnen",
+        permanent: true,
+      },
+      {
+        source: "/strategieen-voor-daytraden-voor-beginners",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/strategieen-voor-daytraden-voor-beginners/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/de-voordelen-van-daytraden-snel-geld-verdienen-of-snel-geld-verliezen",
+        destination: "/voordelen",
+        permanent: true,
+      },
+      {
+        source: "/de-voordelen-van-daytraden-snel-geld-verdienen-of-snel-geld-verliezen/",
+        destination: "/voordelen",
+        permanent: true,
+      },
+      {
+        source: "/leer-hoe-je-geld-kunt-verdienen-met-daytraden-voor-beginners-onthul-de-geheimen-van-de-succesvolle-traders",
+        destination: "/beginnen",
+        permanent: true,
+      },
+      {
+        source: "/leer-hoe-je-geld-kunt-verdienen-met-daytraden-voor-beginners-onthul-de-geheimen-van-de-succesvolle-traders/",
+        destination: "/beginnen",
+        permanent: true,
+      },
+      {
+        source: "/hoe-je-psychologie-je-daytraden-beinvloedt",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/hoe-je-psychologie-je-daytraden-beinvloedt/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/daytraden-leren-word-een-expert-in-daytraden-in-slechts-30-dagen",
+        destination: "/beginnen",
+        permanent: true,
+      },
+      {
+        source: "/daytraden-leren-word-een-expert-in-daytraden-in-slechts-30-dagen/",
+        destination: "/beginnen",
+        permanent: true,
+      },
+      {
+        source: "/verdien-geld-terwijl-je-leert-met-topsteps-funded-trader-programma",
+        destination: "/hoe-werkt-het",
+        permanent: true,
+      },
+      {
+        source: "/verdien-geld-terwijl-je-leert-met-topsteps-funded-trader-programma/",
+        destination: "/hoe-werkt-het",
+        permanent: true,
+      },
+      {
+        source: "/wees-een-pro-in-future-trading-met-deze-10-gouden-tips",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/wees-een-pro-in-future-trading-met-deze-10-gouden-tips/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/ontdek-de-voordelen-van-het-gebruiken-van-een-gefinancierde-trading-account",
+        destination: "/voordelen",
+        permanent: true,
+      },
+      {
+        source: "/ontdek-de-voordelen-van-het-gebruiken-van-een-gefinancierde-trading-account/",
+        destination: "/voordelen",
+        permanent: true,
+      },
+      {
+        source: "/droom-je-ervan-om-een-funded-trader-te-worden-ontdek-hier-hoe-je-een-succesvolle-funded-trader-kunt-worden",
+        destination: "/beginnen",
+        permanent: true,
+      },
+      {
+        source: "/droom-je-ervan-om-een-funded-trader-te-worden-ontdek-hier-hoe-je-een-succesvolle-funded-trader-kunt-worden/",
+        destination: "/beginnen",
+        permanent: true,
+      },
+      {
+        source: "/het-traden-van-nasdaq-100-sp-500-futures-15-tips-voor-succes",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/het-traden-van-nasdaq-100-sp-500-futures-15-tips-voor-succes/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/beginnen-met-daytraden-waarom-starten-met-een-demo-account-slim-is",
+        destination: "/beginnen",
+        permanent: true,
+      },
+      {
+        source: "/beginnen-met-daytraden-waarom-starten-met-een-demo-account-slim-is/",
+        destination: "/beginnen",
+        permanent: true,
+      },
+      {
+        source: "/hoeveel-geld-moet-je-echt-investeren-om-te-beginnen-met-traden",
+        destination: "/kosten",
+        permanent: true,
+      },
+      {
+        source: "/hoeveel-geld-moet-je-echt-investeren-om-te-beginnen-met-traden/",
+        destination: "/kosten",
+        permanent: true,
+      },
+      {
+        source: "/het-geheim-van-succesvol-parttime-traden-maak-winst-zonder-24-7-bezig-te-zijn",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/het-geheim-van-succesvol-parttime-traden-maak-winst-zonder-24-7-bezig-te-zijn/",
         destination: "/blog",
         permanent: true,
       },
 
-      // === AFFILIATE LINK REDIRECTS ===
-      // Nu afgehandeld via /go/[firm] API route in src/app/go/[firm]/route.ts
-      // Configuratie in src/config/analytics.ts
+      // === CATEGORY REDIRECTS ===
+      {
+        source: "/category/daytraden-ervaringen",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/category/daytraden-ervaringen/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/category/daytrading",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/category/daytrading/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/category/funded-trading",
+        destination: "/blog/categorie/financiering",
+        permanent: true,
+      },
+      {
+        source: "/category/funded-trading/",
+        destination: "/blog/categorie/financiering",
+        permanent: true,
+      },
+      {
+        source: "/category/futures-trading",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/category/futures-trading/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/category/overige",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/category/overige/",
+        destination: "/blog",
+        permanent: true,
+      },
+      // Catch-all voor alle categories
+      {
+        source: "/category/:slug",
+        destination: "/blog",
+        permanent: true,
+      },
 
       // === WORDPRESS SPECIFIEKE REDIRECTS ===
       {
@@ -200,6 +434,26 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/feed/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/author/:slug",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/author/:slug/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/tag/:slug",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/tag/:slug/",
         destination: "/blog",
         permanent: true,
       },
@@ -215,6 +469,16 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/wp-content/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/wp-json/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/xmlrpc.php",
         destination: "/",
         permanent: true,
       },

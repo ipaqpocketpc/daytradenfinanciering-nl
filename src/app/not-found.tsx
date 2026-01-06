@@ -41,9 +41,9 @@ export default function NotFound() {
             variant="outline"
             className="border-border hover:border-primary/50 px-6 py-5"
           >
-            <Link href="/prop-firms" className="flex items-center gap-2">
+            <Link href="/hoe-werkt-het" className="flex items-center gap-2">
               <Search className="w-5 h-5" />
-              Bekijk Prop Firms
+              Hoe Werkt Het?
             </Link>
           </Button>
         </div>
@@ -53,28 +53,28 @@ export default function NotFound() {
           <p className="text-sm text-muted-foreground mb-4">Populaire pagina&apos;s:</p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
-              href="/vergelijk"
+              href="/beginnen"
               className="px-4 py-2 rounded-lg bg-card border border-border text-sm text-muted-foreground hover:text-white hover:border-primary/30 transition-all"
             >
-              Vergelijk
+              Beginnen
             </Link>
             <Link
-              href="/prop-firms/ftmo"
+              href="/veelgestelde-vragen"
               className="px-4 py-2 rounded-lg bg-card border border-border text-sm text-muted-foreground hover:text-white hover:border-primary/30 transition-all"
             >
-              FTMO Review
+              Veelgestelde Vragen
             </Link>
             <Link
-              href="/prop-firms/apex-trader-funding"
+              href="/voordelen"
               className="px-4 py-2 rounded-lg bg-card border border-border text-sm text-muted-foreground hover:text-white hover:border-primary/30 transition-all"
             >
-              Apex Review
+              Voordelen
             </Link>
             <Link
-              href="/tools/winstcalculator"
+              href="/kosten"
               className="px-4 py-2 rounded-lg bg-card border border-border text-sm text-muted-foreground hover:text-white hover:border-primary/30 transition-all"
             >
-              Calculator
+              Kosten
             </Link>
           </div>
         </div>

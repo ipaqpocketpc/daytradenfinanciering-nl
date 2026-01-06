@@ -4,8 +4,16 @@ import { Shield, ChevronRight } from "lucide-react"
 import { brand } from "@/config"
 
 export const metadata: Metadata = {
-  title: `Privacy Policy`,
-  description: `Lees hoe ${brand.name} omgaat met je persoonlijke gegevens en privacy.`,
+  title: "Privacy Policy",
+  description: `Lees hoe ${brand.name} omgaat met je persoonlijke gegevens en privacy. Informatie over cookies, analytics en gegevensbescherming.`,
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: `Privacy Policy | ${brand.name}`,
+    description: `Lees hoe ${brand.name} omgaat met je persoonlijke gegevens en privacy.`,
+    url: `${brand.url}/privacy`,
+  },
 }
 
 export default function PrivacyPage() {
@@ -71,7 +79,7 @@ export default function PrivacyPage() {
 
             <h2 className="text-xl font-bold text-white mt-8 mb-4">3. Affiliate Links</h2>
             <p className="text-muted-foreground">
-              Onze website bevat affiliate links naar prop trading firms. Wanneer u op deze links
+              Onze website bevat affiliate links naar aanbieders van trading kapitaal. Wanneer u op deze links
               klikt en een aankoop doet, ontvangen wij mogelijk een commissie. Dit beïnvloedt onze
               reviews en vergelijkingen niet. Wij streven ernaar objectieve en eerlijke informatie
               te verstrekken.

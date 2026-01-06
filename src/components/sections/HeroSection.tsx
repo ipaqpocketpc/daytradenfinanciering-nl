@@ -99,7 +99,7 @@ export function HeroSection({
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 animate-fade-up delay-300">
             {[
               { icon: Shield, value: "100%", label: "Onafhankelijk" },
-              { icon: Award, value: "20+", label: "Prop Firms" },
+              { icon: Award, value: "20+", label: "Financiers" },
               { icon: Users, value: "12.500+", label: "NL Traders" },
               { icon: TrendingUp, value: "€50M+", label: "Funded Capital" },
             ].map((stat, index) => (

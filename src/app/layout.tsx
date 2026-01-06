@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: seo.locale,
     siteName: seo.siteName,
-    images: [seo.ogImage],
+    // OG images generated dynamically via opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
@@ -45,9 +45,9 @@ export default function RootLayout({
         <meta name="theme-color" content={design.themeColor} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="FundedTrading" />
+        <meta name="apple-mobile-web-app-title" content="Daytraden Financiering" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="FundedTrading" />
+        <meta name="application-name" content="Daytraden Financiering" />
         <meta name="msapplication-TileColor" content={design.themeColor} />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="format-detection" content="telephone=no" />

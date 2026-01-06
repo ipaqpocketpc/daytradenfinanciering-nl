@@ -4,8 +4,16 @@ import { AlertTriangle, ChevronRight } from "lucide-react"
 import { brand } from "@/config"
 
 export const metadata: Metadata = {
-  title: `Disclaimer`,
-  description: `Belangrijke informatie over risico's en affiliate relaties van ${brand.name}.`,
+  title: "Disclaimer",
+  description: `Belangrijke informatie over trading risico's en affiliate relaties van ${brand.name}. Lees dit voordat je begint met traden.`,
+  alternates: {
+    canonical: "/disclaimer",
+  },
+  openGraph: {
+    title: `Disclaimer | ${brand.name}`,
+    description: `Belangrijke informatie over risico's en affiliate relaties van ${brand.name}.`,
+    url: `${brand.url}/disclaimer`,
+  },
 }
 
 export default function DisclaimerPage() {
@@ -62,13 +70,13 @@ export default function DisclaimerPage() {
               juridisch of belastingadvies. Wij zijn geen geregistreerde financieel adviseurs.
             </p>
             <p className="text-muted-foreground">
-              Voordat u beslissingen neemt over trading of het kiezen van een prop trading firm,
+              Voordat u beslissingen neemt over trading of het kiezen van een financier,
               raden wij u aan om onafhankelijk professioneel advies in te winnen.
             </p>
 
             <h2 className="text-xl font-bold text-white mt-8 mb-4">2. Affiliate Relaties</h2>
             <p className="text-muted-foreground">
-              {brand.name} onderhoudt affiliate relaties met verschillende prop trading firms.
+              {brand.name} onderhoudt affiliate relaties met aanbieders van funded trading.
               Dit betekent dat wij een commissie kunnen ontvangen wanneer u via onze links een
               product of dienst afneemt.
             </p>
@@ -86,20 +94,20 @@ export default function DisclaimerPage() {
               wij niet garanderen dat alle informatie op deze website volledig, nauwkeurig of actueel is.
             </p>
             <p className="text-muted-foreground">
-              Prijzen, voorwaarden en regels van prop trading firms kunnen zonder voorafgaande
+              Prijzen, voorwaarden en regels van financiers kunnen zonder voorafgaande
               kennisgeving wijzigen. Controleer altijd de officiële website van de betreffende
-              prop firm voor de meest actuele informatie.
+              aanbieder voor de meest actuele informatie.
             </p>
 
-            <h2 className="text-xl font-bold text-white mt-8 mb-4">4. Risico&apos;s van Prop Trading</h2>
+            <h2 className="text-xl font-bold text-white mt-8 mb-4">4. Risico&apos;s van Funded Trading</h2>
             <p className="text-muted-foreground">
-              Prop trading brengt specifieke risico&apos;s met zich mee:
+              Funded trading brengt specifieke risico&apos;s met zich mee:
             </p>
             <ul className="text-muted-foreground space-y-2">
               <li><strong className="text-white">Challenge kosten:</strong> U betaalt een fee om deel te nemen aan een challenge. Deze fee is niet gegarandeerd terug te krijgen.</li>
               <li><strong className="text-white">Falen van challenge:</strong> De meeste traders slagen niet in hun eerste challenge. Statistisch gezien faalt 80-90% van de deelnemers.</li>
-              <li><strong className="text-white">Regelwijzigingen:</strong> Prop firms kunnen hun regels en voorwaarden wijzigen.</li>
-              <li><strong className="text-white">Bedrijfsrisico:</strong> Prop trading firms kunnen failliet gaan of hun diensten stopzetten.</li>
+              <li><strong className="text-white">Regelwijzigingen:</strong> Financiers kunnen hun regels en voorwaarden wijzigen.</li>
+              <li><strong className="text-white">Bedrijfsrisico:</strong> Aanbieders kunnen failliet gaan of hun diensten stopzetten.</li>
             </ul>
 
             <h2 className="text-xl font-bold text-white mt-8 mb-4">5. Statistieken en Cijfers</h2>

@@ -13,9 +13,9 @@ export async function GET(
   const affiliateUrl = getAffiliateUrl(firmSlug)
   const firmName = getAffiliateName(firmSlug)
 
-  // If no affiliate found, redirect to prop-firms page
+  // If no affiliate found, redirect to beginnen page
   if (!affiliateUrl) {
-    return NextResponse.redirect(new URL('/prop-firms', request.url))
+    return NextResponse.redirect(new URL('/beginnen', request.url))
   }
 
   // Log the click (server-side)

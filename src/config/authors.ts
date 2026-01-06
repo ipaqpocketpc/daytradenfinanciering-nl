@@ -27,10 +27,10 @@ export const authors: Author[] = [
     slug: "redactie",
     name: "Redactie",
     role: "Hoofdredacteur",
-    bio: "Het redactieteam van Funded Trading Nederland bestaat uit ervaren traders en financieel schrijvers. We combineren jarenlange trading ervaring met diepgaande kennis van de Nederlandse prop trading markt om objectieve, betrouwbare informatie te bieden.",
+    bio: "Het redactieteam van DaytradenFinanciering bestaat uit ervaren traders en financieel schrijvers. We combineren jarenlange trading ervaring met diepgaande kennis van funded trading om objectieve, betrouwbare informatie te bieden.",
     avatar: "/images/authors/redactie.png",
     expertise: [
-      "Prop Trading Vergelijkingen",
+      "Funded Trading",
       "Belasting & Fiscaal",
       "Trading Strategieën",
       "Risicomanagement",
@@ -51,7 +51,7 @@ export const authors: Author[] = [
     avatar: "/images/authors/thomas.png",
     expertise: [
       "Technische Analyse",
-      "FTMO Challenges",
+      "Trading Challenges",
       "Forex Trading",
       "Price Action",
     ],
@@ -75,7 +75,7 @@ export const authors: Author[] = [
     expertise: [
       "Beginners Guides",
       "Trading Psychologie",
-      "Prop Firm Nieuws",
+      "Funded Trading Nieuws",
       "Interview Series",
     ],
     stats: {

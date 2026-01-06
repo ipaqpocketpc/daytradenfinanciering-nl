@@ -10,7 +10,9 @@
 | **Doel** | Bezoekers via SEO → Prop firm aanmeldingen → Affiliate revenue |
 | **Partner** | FTMO (exclusief) |
 | **Tech Stack** | Next.js 15, TypeScript, Tailwind CSS 4, Vercel |
-| **Status** | Bestaand domein - complete renewal nodig |
+| **Status** | 🟢 **LIVE READY** - Volledig geaudit, klaar voor deploy |
+| **Laatste Audit** | 2026-01-06 |
+| **Build** | ✅ 62 pagina's succesvol |
 
 ---
 
@@ -121,11 +123,10 @@ export async function GET() {
 
 ## Pagina Structuur
 
-### Minimale Site (~30-50 pagina's)
+### Site Structuur (56 pagina's)
 
 ```
 /                           → Homepage: "Krijg Trading Kapitaal"
-/wat-is-prop-trading        → Uitleg prop trading concept
 /hoe-werkt-het              → Stap-voor-stap proces
 /voordelen                  → Waarom financiering kiezen
 /kosten                     → Wat kost het (challenge prijs)
@@ -133,8 +134,10 @@ export async function GET() {
 /beginnen                   → Start hier (CTA pagina)
 /go/kapitaal                → Affiliate redirect naar FTMO
 /begrippen                  → Glossary (trading termen)
-/blog                       → Blog (auto-generated)
-/blog/[slug]                → Blog artikelen
+/blog                       → Blog
+/blog/[slug]                → Blog artikelen (6 posts)
+/blog/categorie/[category]  → Blog categorieën
+/blog/tag/[tag]             → Blog tags
 /contact                    → Contact pagina
 /over-ons                   → Over ons
 /privacy                    → Privacy policy
@@ -262,29 +265,36 @@ Zelfde setup als fundedtrading.nl maar met andere focus:
 
 ## Development Roadmap
 
-### Fase 1: Setup (Dag 1-2)
+### Fase 1: Setup ✅
 - [x] Clone fundedtrading template
-- [ ] Strip alle content
-- [ ] Nieuwe brand.ts configureren
-- [ ] Basis pages aanmaken
+- [x] Strip alle content (tools verwijderd)
+- [x] Nieuwe brand.ts configureren
+- [x] Basis pages aanmaken
 
-### Fase 2: Content (Dag 3-5)
-- [ ] Homepage schrijven
-- [ ] Kernpagina's schrijven (5-6 pagina's)
-- [ ] FAQ's schrijven
-- [ ] Glossary vullen
+### Fase 2: Content ✅
+- [x] Homepage schrijven
+- [x] Kernpagina's schrijven
+- [x] FAQ's schrijven
+- [x] Glossary vullen
+- [x] Blog posts
 
-### Fase 3: Polish (Dag 6-7)
-- [ ] SEO optimalisatie
-- [ ] Schema.org implementeren
-- [ ] Redirects configureren
-- [ ] Testing
+### Fase 3: Polish ✅
+- [x] SEO optimalisatie
+- [x] Schema.org implementeren
+- [x] 301 redirects (WordPress URLs)
+- [x] GA4 tracking ingesteld (G-VVZ1P75HHS)
+- [x] Build verificatie (62 pagina's)
+- [x] Security headers
+- [x] Dynamic OG images
+- [x] Full site audit
 
-### Fase 4: Launch
-- [ ] Vercel deployment
-- [ ] Domain koppelen
-- [ ] Google Search Console
-- [ ] Monitoring opzetten
+### Fase 4: Launch 🚀
+- [ ] **GitHub → Vercel koppelen**
+- [ ] Domain koppelen (daytradenfinanciering.nl)
+- [ ] DNS verificeren
+- [ ] SSL automatisch via Vercel
+- [ ] Google Search Console verifiëren
+- [ ] Sitemap indienen
 
 ---
 
@@ -300,6 +310,17 @@ npm run build
 # Lint
 npm run lint
 ```
+
+---
+
+## TODO: Na Launch
+
+- [ ] **MXRoute:** Emailaccounts aanmaken (info@, noreply@)
+- [ ] **Vercel:** SMTP env vars toevoegen voor contactformulier
+- [ ] **Google Search Console:** Site verifiëren en sitemap indienen
+- [ ] **Clarity:** Project ID toevoegen (optioneel)
+- [ ] **n8n:** Auto-blog workflow opzetten
+- [ ] **Monitoring:** Uptime check instellen
 
 ---
 

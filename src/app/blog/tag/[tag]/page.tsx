@@ -4,6 +4,7 @@ import Link from "next/link"
 import Script from "next/script"
 import { Calendar, Clock, ArrowLeft, ArrowRight, Tag, TrendingUp } from "lucide-react"
 import { blogPosts, blogCategories, getPostsByTag, getAllTags, BlogPost } from "@/config/blog"
+import { brand } from "@/config/brand"
 
 type Props = {
   params: Promise<{ tag: string }>
@@ -30,8 +31,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `Artikelen over ${decodedTag} | Prop Trading Blog`,
-    description: `Alle blog artikelen over ${decodedTag}. Tips, nieuws en analyses over prop trading.`,
+    title: `Artikelen over ${decodedTag} | Funded Trading Blog`,
+    description: `Alle blog artikelen over ${decodedTag}. Tips, nieuws en analyses over funded trading.`,
+    alternates: {
+      canonical: `/blog/tag/${tag}`,
+    },
+    openGraph: {
+      title: `Artikelen over ${decodedTag} | Funded Trading Blog`,
+      description: `Alle blog artikelen over ${decodedTag}. Tips, nieuws en analyses over funded trading.`,
+      url: `${brand.url}/blog/tag/${tag}`,
+    },
   }
 }
 
@@ -150,7 +159,7 @@ export default async function TagPage({ params }: Props) {
                 Meer ontdekken?
               </h3>
               <p className="text-muted-foreground mb-6">
-                Bekijk al onze artikelen of vergelijk direct de beste prop trading firms.
+                Bekijk al onze artikelen of start direct met funded trading.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
@@ -160,10 +169,10 @@ export default async function TagPage({ params }: Props) {
                   Alle Artikelen
                 </Link>
                 <Link
-                  href="/prop-firms"
+                  href="/go/kapitaal"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition-colors"
                 >
-                  Bekijk Prop Firms
+                  Start met Trading
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -182,7 +191,7 @@ export default async function TagPage({ params }: Props) {
             "@type": "CollectionPage",
             "name": `Artikelen over ${decodedTag}`,
             "description": `Alle blog artikelen over ${decodedTag}`,
-            "url": `https://fundedtrading.nl/blog/tag/${encodeURIComponent(decodedTag)}`,
+            "url": `${brand.url}/blog/tag/${encodeURIComponent(decodedTag)}`,
             "mainEntity": {
               "@type": "ItemList",
               "itemListElement": sortedPosts.map((post, index) => ({
@@ -191,7 +200,7 @@ export default async function TagPage({ params }: Props) {
                 "item": {
                   "@type": "BlogPosting",
                   "headline": post.title,
-                  "url": `https://fundedtrading.nl/blog/${post.slug}`,
+                  "url": `${brand.url}/blog/${post.slug}`,
                 },
               })),
             },

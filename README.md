@@ -1,10 +1,28 @@
-# FundedTrading.nl
+# DaytradenFinanciering.nl
 
-Affiliate vergelijkingswebsite voor prop trading firms in Nederland.
+Affiliate landing site voor trading kapitaal en financiering via FTMO.
 
 ## Status
 
-**Production Ready** - 314 pagina's gebouwd en klaar voor deployment.
+🟢 **LIVE READY** - Site is volledig geaudit en klaar voor Vercel deployment.
+
+| Check | Status |
+|-------|--------|
+| Build | ✅ 62 pagina's succesvol |
+| SEO | ✅ Sitemap, robots, OG images |
+| Security | ✅ Headers geconfigureerd |
+| Analytics | ✅ GA4 actief |
+| Legal | ✅ Privacy, disclaimer |
+| Branding | ✅ Emerald theme consistent |
+
+## Positionering
+
+> "Hoe krijg je kapitaal om te traden?"
+
+Dit is een **financieringsspecialist** site, GEEN vergelijkingssite. Focus op één vraag beantwoorden:
+- Trading kapitaal zonder eigen geld
+- Word gefinancierd als trader
+- Van €0 naar €200.000 trading kapitaal
 
 ## Quick Start
 
@@ -23,13 +41,15 @@ npm run build
 
 ```
 src/
-├── app/                    # Next.js App Router (314 pagina's)
-│   ├── [stad]/             # 50 stadspagina's
-│   ├── categorie/[niche]/  # 166 niche pagina's
-│   ├── prop-firms/[slug]/  # 16 prop firm pagina's
-│   ├── tools/[slug]/       # Trading tools
-│   ├── vergelijk/          # Vergelijkingspagina's
-│   └── blog/               # Blog systeem
+├── app/                    # Next.js App Router
+│   ├── hoe-werkt-het/      # Hoe trading kapitaal werkt
+│   ├── voordelen/          # Voordelen van financiering
+│   ├── kosten/             # Challenge kosten uitgelegd
+│   ├── beginnen/           # Start hier (CTA pagina)
+│   ├── veelgestelde-vragen/ # FAQ
+│   ├── begrippen/          # Glossary
+│   ├── blog/               # Blog systeem
+│   └── go/[firm]/          # Affiliate redirects
 ├── components/             # React componenten
 ├── config/                 # Data & configuratie
 └── lib/                    # Utilities & helpers
@@ -37,12 +57,11 @@ src/
 
 ## Features
 
-- 16 prop firms met geverifieerde data
-- 50 Nederlandse steden met lokale content
-- 166 niche categorieën
-- Vergelijkingstool voor prop firms
-- Trading calculators (ROI, position size, etc.)
-- SEO-geoptimaliseerd met Schema.org
+- Focus op trading kapitaal/financiering
+- Eén affiliate partner: FTMO
+- SEO-geoptimaliseerd voor "daytraden financiering" keywords
+- Blog systeem (auto-blog later via n8n)
+- Schema.org implementatie
 - Responsive design met Tailwind CSS
 
 ## Tech Stack
@@ -55,18 +74,17 @@ src/
 | shadcn/ui | Latest |
 | Deployment | Vercel |
 
-## Affiliate Partners
+## Affiliate Partner
 
-- **FTMO** - Primaire partner
-- **Apex Trader Funding** - Primaire partner
+- **FTMO** - Exclusieve partner via `/go/kapitaal`
 
 ## Development
 
 Zie `CLAUDE.md` voor uitgebreide documentatie over:
-- Brand guidelines
+- Brand guidelines (groen thema)
 - Content strategie
 - SEO templates
-- Data structuren
+- Affiliate configuratie
 
 ## Environment Variables
 
@@ -75,6 +93,16 @@ Kopieer `.env.example` naar `.env.local`:
 ```bash
 cp .env.example .env.local
 ```
+
+## Gerelateerde Projecten
+
+| Project | Relatie |
+|---------|---------|
+| fundedtrading.nl | Template bron (code) |
+| debeurzen.nl | Zustersite (geen linking) |
+| cursustraden.nl | Zustersite (geen linking) |
+
+**BELANGRIJK:** Geen cross-linking tussen sites. Volledig standalone.
 
 ## License
 
