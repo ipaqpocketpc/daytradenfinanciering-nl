@@ -7,7 +7,7 @@ export const analyticsConfig = {
 
   // Microsoft Clarity Project ID
   // TODO: Vervang met Clarity ID (optioneel)
-  clarityProjectId: "",
+  clarityProjectId: "a9tui6tuln",
 
   // Google Search Console verification
   googleSiteVerification: "089qRz1MVP4hX8a1KydNB6RvCl9cQwLcb7bpIsr8S4o",
